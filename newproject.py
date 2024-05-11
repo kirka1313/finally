@@ -1,10 +1,12 @@
 import telebot
 from newvalidators import *
-from newconfig import TOKEN, LOGS, COUNT_LAST_MSG
+from newconfig import COUNT_LAST_MSG, LOGS
 from mewdatabase import create_database, add_message, select_n_last_messages
 from newcount import speech_to_text, text_to_speech, ask_gpt
-bot = telebot.TeleBot(TOKEN)
-logging.basicConfig(filename='logs1.log', level=logging.INFO, format="%(asctime)s FILE: %(filename)s IN: %(funcName)s MESSAGE: %(message)s", filemode="w")
+from creds import get_bot_token
+
+bot = telebot.TeleBot(get_bot_token())
+logging.basicConfig(filename=LOGS, level=logging.INFO, format="%(asctime)s FILE: %(filename)s IN: %(funcName)s MESSAGE: %(message)s", filemode="w")
 
 
 

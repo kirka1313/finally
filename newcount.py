@@ -1,8 +1,9 @@
 import logging
-from newconfig import MAX_GPT_TOKENS, SYSTEM_PROMPT, IAM_TOKEN, FOLDER_ID
+from newconfig import MAX_GPT_TOKENS, SYSTEM_PROMPT
 import requests
 from newvalidators import count_gpt_tokens
-
+from creds import get_creds
+IAM_TOKEN, FOLDER_ID = get_creds()
 
 def ask_gpt(messages):
     url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"

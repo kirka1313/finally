@@ -2,8 +2,10 @@ import logging
 from mewdatabase import count_users, count_all_limits
 import requests
 from newconfig import *
+from creds import get_creds
 logging.basicConfig(filename=LOGS, level=logging.ERROR, format="%(asctime)s FILE: %(filename)s IN: %(funcName)s MESSAGE: %(message)s", filemode="w")
 
+IAM_TOKEN, FOLDER_ID = get_creds()
 
 def count_gpt_tokens(messages):
     url = "https://llm.api.cloud.yandex.net/foundationModels/v1/tokenizeCompletion"
