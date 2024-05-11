@@ -15,6 +15,6 @@ SYSTEM_PROMPT = [{'role': 'system', 'text': 'Ты веселый собесед�
                                             'Поддерживай диалог. Не объясняй пользователю, что ты умеешь и можешь. '
      
                                             'Изображай человека'}]
-IAM_TOKEN = 't1.9euelZqWls6VnsqPnZSQlpSNl82Xj-3rnpWaisaTlpDNm8yTjYmYlpiayMvl8_dpWwFO-e8_EngY_t3z9ykKf0357z8SeBj-zef1656VmpbHkJqcxpGJlo3Lk5LNnozL7_zF656VmpbHkJqcxpGJlo3Lk5LNnozLveuelZrLnMrLyJOeyZCNl5WVlo-Nk7XehpzRnJCSj4qLmtGLmdKckJKPioua0pKai56bnoue0oye.8peSeK-w_ylPJgn5jdM4t0UTNQe2qbNVDL-Eu7AdyD7L8qG1YmRAyhM9W073ZbjC1rXo5A9XLojVf8zEmkM7Dw'
+IAM_TOKEN = 't1.9euelZqOy4maxsrKyYrOk5WRmsvIiu3rnpWaisaTlpDNm8yTjYmYlpiayMvl8_cyEAxO-e8EKT5Y_t3z93I-CU757wQpPlj-zef1656Vms6Kxs-NkIzJjouJzMqNyJOU7_zF656Vms6Kxs-NkIzJjouJzMqNyJOUveuelZrGys-Ol4udio2czJLLkMqNlLXehpzRnJCSj4qLmtGLmdKckJKPioua0pKai56bnoue0oye.vWRwWf50Es-aeCDGbdj94zGUvMn7Ay0UuCnyN2zhgylrtkyPOKb_N_qritcUfZAWssyOn-TOobvgo0m5hFtZDA'
 
 FOLDER_ID= 'b1ghfb4epm2t95ql7k0d'
