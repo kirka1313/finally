@@ -15,7 +15,7 @@ SYSTEM_PROMPT = [{'role': 'system', 'text': 'Ты веселый собесед�
                                             'Изображай человека'}]
 
 
-HOME_DIR = '/home/student/pythonProject2'  # путь к папке с проектом
+HOME_DIR = '/home/student/finally'  # путь к папке с проектом
 LOGS = 'logs.txt'  # файл для логов
 DB_FILE = f'{HOME_DIR}/messages.db'  # файл для базы данных
 
