@@ -3,3 +3,4 @@ venv/
 my-key
 logs.txt
 *.db
+creds/
