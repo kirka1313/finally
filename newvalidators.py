@@ -42,15 +42,15 @@ def is_gpt_token_limit(messages, total_spent_tokens):
 
 def is_stt_block_limit(user_id, duration):
     if duration > 30:
-        return None, 'слишкамтлахуя длина'
+        return None, 'слишкамтлауя длина'
     blocks = count_all_limits(user_id, 'stt_blocks')
     if blocks > MAX_USER_STT_BLOCKS:
-        return None, 'idi nah'
+        return None, 'idi na'
     return blocks, ''
 
 
 def is_tts_symbol_limit(user_id, text):
     symbols = count_all_limits(user_id, 'tts_symbols')
     if symbols > MAX_USER_TTS_SYMBOLS:
-        return None, 'idi nah'
+        return None, 'idi na'
     return symbols, ''
