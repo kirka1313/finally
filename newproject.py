@@ -126,6 +126,9 @@ def speech_to_text_or_rather(message):
         bot.send_message(message.chat.id, 'ну не наглей,сто символов будет достаточно тебе')
         return
     tts_symbols, error = is_tts_symbol_limit(message.chat.id, message.text)
+    if error:
+        bot.send_message(message.chat.id, 'закончились токены')
+        return
     status, content = text_to_speech(message.text)
     if not status:
         bot.send_message(message.chat.id, content)
