@@ -2,7 +2,6 @@ import sqlite3
 import logging
 from newconfig import LOGS, DB_FILE
 
-
 logging.basicConfig(filename=LOGS, level=logging.ERROR,
                     format="%(asctime)s FILE: %(filename)s IN: %(funcName)s MESSAGE: %(message)s", filemode="w")
 path_to_db = DB_FILE
@@ -83,7 +82,3 @@ def count_all_limits(user_id, limit_type):
     except Exception as e:
         logging.error(e)
         return 0
-
-
-
-

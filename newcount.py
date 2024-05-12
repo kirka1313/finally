@@ -1,16 +1,15 @@
 import logging
-from newconfig import MAX_GPT_TOKENS, SYSTEM_PROMPT
+from newconfig import MAX_GPT_TOKENS, SYSTEM_PROMPT, URL, HEADERS_GPT
 import requests
 from newvalidators import count_gpt_tokens
 from creds import get_creds
+
 IAM_TOKEN, FOLDER_ID = get_creds()
 
+
 def ask_gpt(messages):
-    url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
-    headers = {
-        'Authorization': f'Bearer {IAM_TOKEN}',
-        'Content-Type': 'application/json'
-    }
+    url = URL
+    headers = HEADERS_GPT
     data = {
         'modelUri': f"gpt://{FOLDER_ID}/yandexgpt-lite",
         "completionOptions": {
@@ -29,7 +28,7 @@ def ask_gpt(messages):
         return True, answer, tokens_in_answer
     except Exception as e:
         logging.error(e)
-        return False, "Ошибка при обращении к GPT",  None
+        return False, "Ошибка при обращении к GPT", None
 
 
 def speech_to_text(data):

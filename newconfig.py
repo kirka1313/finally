@@ -1,4 +1,6 @@
+from creds import get_creds
 
+IAM_TOKEN, FOLDER_ID = get_creds()
 
 MAX_USERS = 3  # максимальное кол-во пользователей
 MAX_GPT_TOKENS = 150  # максимальное кол-во токенов в ответе GPT
@@ -11,10 +13,14 @@ MAX_USER_GPT_TOKENS = 2_000  # 2 000 токенов
 
 SYSTEM_PROMPT = [{'role': 'system', 'text': 'Ты веселый собеседник. Общайся с пользователем на "ты" и используй юмор. '
                                             'Поддерживай диалог. Не объясняй пользователю, что ты умеешь и можешь. '
-     
+
                                             'Изображай человека'}]
 
-
+HEADERS_GPT = {
+    'Authorization': f'Bearer {IAM_TOKEN}',
+    'Content-Type': 'application/json'
+}
+URL = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
 HOME_DIR = '/home/student/finally'  # путь к папке с проектом
 LOGS = 'logs.txt'  # файл для логов
 DB_FILE = f'{HOME_DIR}/messages.db'  # файл для базы данных

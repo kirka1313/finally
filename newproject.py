@@ -6,8 +6,8 @@ from newcount import speech_to_text, text_to_speech, ask_gpt
 from creds import get_bot_token
 
 bot = telebot.TeleBot(get_bot_token())
-logging.basicConfig(filename=LOGS, level=logging.INFO, format="%(asctime)s FILE: %(filename)s IN: %(funcName)s MESSAGE: %(message)s", filemode="w")
-
+logging.basicConfig(filename=LOGS, level=logging.INFO,
+                    format="%(asctime)s FILE: %(filename)s IN: %(funcName)s MESSAGE: %(message)s", filemode="w")
 
 
 @bot.message_handler(commands=['start'])
@@ -98,6 +98,41 @@ def handle_text(message):
     full_gpt_message = [answer_gpt, 'assistant', total_gpt_tokens, 0, 0]
     add_message(user_id=user_id, full_message=full_gpt_message)
     bot.send_message(user_id, answer_gpt, reply_to_message_id=message.id)
+
+
+@bot.message_handler(comands=['stt', 'tts'])
+def speech_text(message):
+    bot.send_message(message.chat.id, 'Отправьте голосовое или текстовое сообщение и я переведу в иной вид')
+    bot.register_next_step_handler(message, speech_to_text_or_rather)
+
+
+def speech_to_text_or_rather(message):
+    if message.content.types == 'voice':
+        stt_blocks = is_stt_block_limit(message, message.voice.duration)
+        if not stt_blocks:
+            bot.send_message(message.chat.id, 'чет у вас не так')
+            return
+        file_info = bot.get_file(message.voice.file_id)
+        file = bot.download_file(file_info.file_path)
+        status, text = speech_to_text(file)
+        if not status:
+            bot.send_message(message.chat.id, f'Произошла ошибка {text}')
+            return
+        bot.send_message(message.chat.id, text)
+        return
+
+    text_symbols = len(message.text)
+    if text_symbols > 100:
+        bot.send_message(message.chat.id, 'ну не наглей,сто символов будет достаточно тебе')
+        return
+    tts_symbols, error = is_tts_symbol_limit(message.chat.id, message.text)
+    status, content = text_to_speech(message.text)
+    if not status:
+        bot.send_message(message.chat.id, content)
+        return
+    with open("output.ogg", "wb") as audio_file:
+        audio_file.write(content)
+    bot.send_voice(message.chat.id, content)
 
 
 create_database()
