@@ -1,6 +1,3 @@
-from creds import get_creds
-
-IAM_TOKEN, FOLDER_ID = get_creds()
 
 MAX_USERS = 3  # максимальное кол-во пользователей
 MAX_GPT_TOKENS = 150  # максимальное кол-во токенов в ответе GPT
@@ -17,7 +14,7 @@ SYSTEM_PROMPT = [{'role': 'system', 'text': 'Ты веселый собесед�
                                             'Изображай человека'}]
 
 HEADERS_GPT = {
-    'Authorization': f'Bearer {IAM_TOKEN}',
+    'Authorization': f'Bearer   ',
     'Content-Type': 'application/json'
 }
 URL = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"

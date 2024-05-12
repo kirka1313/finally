@@ -9,7 +9,10 @@ IAM_TOKEN, FOLDER_ID = get_creds()
 
 def ask_gpt(messages):
     url = URL
-    headers = HEADERS_GPT
+    headers = {
+        'Authorization': f'Bearer {IAM_TOKEN}',
+        'Content-Type': 'application/json'
+    }
     data = {
         'modelUri': f"gpt://{FOLDER_ID}/yandexgpt-lite",
         "completionOptions": {
