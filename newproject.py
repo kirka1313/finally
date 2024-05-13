@@ -80,7 +80,7 @@ def speech_text(message):
 
 
 def speech_to_text_or_rather(message):
-    if message.content.types == 'voice':
+    if message.content_type == 'voice':
         stt_blocks = is_stt_block_limit(message, message.voice.duration)
         if not stt_blocks:
             bot.send_message(message.chat.id, 'чет у вас не так')
@@ -93,7 +93,7 @@ def speech_to_text_or_rather(message):
             return
         bot.send_message(message.chat.id, text)
         return
-    elif message.content.types == 'text':
+    elif message.content_type == 'text':
         text_symbols = len(message.text)
         if text_symbols > 100:
             bot.send_message(message.chat.id, 'ну не наглей,сто символов будет достаточно тебе')
