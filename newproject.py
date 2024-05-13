@@ -73,9 +73,9 @@ def handle_voice(message: telebot.types.Message):
         bot.send_message(user_id, answer_gpt, reply_to_message_id=message.id)
 
 
-@bot.message_handler(comands=['stt', 'tts'])
+@bot.message_handler(comands=['stt'])
 def speech_text(message):
-    bot.send_message(message.chat.id, 'Отправьте голосовое или текстовое сообщение и я переведу в иной вид')
+    bot.send_message(message.chat.id, 'Отправьте голосовое сообщение и я переведу в иной вид')
     bot.register_next_step_handler(message, speech_to_text_or_rather)
 
 
@@ -94,21 +94,7 @@ def speech_to_text_or_rather(message):
         bot.send_message(message.chat.id, text)
         return
 
-    text_symbols = len(message.text)
-    if text_symbols > 100:
-        bot.send_message(message.chat.id, 'ну не наглей,сто символов будет достаточно тебе')
-        return
-    tts_symbols, error = is_tts_symbol_limit(message.chat.id, message.text)
-    if error:
-        bot.send_message(message.chat.id, 'закончились токены')
-        return
-    status, content = text_to_speech(message.text)
-    if not status:
-        bot.send_message(message.chat.id, content)
-        return
-    with open("output.ogg", "wb") as audio_file:
-        audio_file.write(content)
-    bot.send_voice(message.chat.id, content)
+
 
 
 @bot.message_handler(content_types=['text'])
