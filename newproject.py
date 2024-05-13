@@ -73,7 +73,7 @@ def handle_voice(message: telebot.types.Message):
         bot.send_message(user_id, answer_gpt, reply_to_message_id=message.id)
 
 
-@bot.message_handler(commands=['stt'])
+@bot.message_handler(commands=['stt', 'tts'])
 def speech_text(message):
     bot.send_message(message.chat.id, 'Отправьте голосовое сообщение и я переведу в иной вид')
     bot.register_next_step_handler(message, speech_to_text_or_rather)
